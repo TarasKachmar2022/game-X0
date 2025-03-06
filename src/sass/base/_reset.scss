@@ -3,6 +3,7 @@ body {
   font-family: var(--main-font);
   color: var(--main-txt-cl);
   user-select: none;
+  overflow: hidden;
 }
 
 h1,

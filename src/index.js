@@ -33,12 +33,12 @@ function createMarkup() {
   }
 
   for (let i = 1; i < 9; i += 1) {
-    markup += `<div class="line" data-line="${i}"></div>`;
+    markup += `<div class="line js-line" data-line="${i}"></div>`;
   }
 
   for (let i = 1; i < 9; i += 1) {
     penMarkup += `<img
-    class="pen"
+    class="pen js-pen"
     data-pen="${i}"
     src="${penImage}"
     alt="pen"
@@ -56,8 +56,8 @@ createMarkup();
 function onClick(e) {
   const { target } = e;
 
-  console.log(e.currentTarget);
-  console.log(target);
+  // console.log(e.currentTarget);
+  // console.log(target);
 
   if (target.textContent) {
     return;
@@ -72,8 +72,8 @@ function onClick(e) {
     history0.push(id);
   }
 
-  console.log(history0);
-  console.log(historyx);
+  // console.log(history0);
+  // console.log(historyx);
 
   player = player === 'X' ? '0' : 'X';
 
@@ -96,6 +96,9 @@ function reset() {
 }
 
 function checkWins() {
+  let winnerXIdx = 0;
+  let winner0Idx = 0;
+
   if (historyx.length + history0.length >= 5) {
     const isWinnerX = wins.some(item =>
       item.every(id => historyx.includes(id))
@@ -105,23 +108,50 @@ function checkWins() {
       item.every(id => history0.includes(id))
     );
 
-    console.log(isWinnerX);
-    console.log(isWinner0);
+    // console.log(isWinnerX);
+    // console.log(isWinnerX);
+    const playerX = 'Taras';
+    const player0 = 'Oksana';
 
     if (isWinnerX) {
-      // const result = wins.find(item => {
-      //   item.every(id => historyx.includes(id));
-      //   return item.length;
-      // });
-      console.log(result);
-      console.log('win');
-      winnerEl.textContent = 'Winner';
+      winnerXIdx = wins.findIndex(item =>
+        item.every(id => historyx.includes(id))
+      );
+      victory(playerX, winnerXIdx);
+      console.log(playerX, winnerXIdx);
+
+      // console.log('win');
+      winnerEl.textContent = 'Winner PlayerX';
+    } else if (isWinner0) {
+      winner0Idx = wins.findIndex(item =>
+        item.every(id => history0.includes(id))
+      );
+      victory(player0, winner0Idx);
+      console.log(player0, winner0Idx);
     }
   }
 }
+// console.log(penEl);
+const lineEl = document.querySelectorAll('.js-line');
+const penEl = document.querySelectorAll('.js-pen');
+function victory(player, idx) {
+  // console.log(idx);
+  const lineArr = [...lineEl];
+  const penArr = [...penEl];
 
-// function victory() {}
+  const selectLine = lineArr.find(
+    el => Number(el.dataset.line) === Number(idx + 1)
+  );
 
-// function draw() {}
+  const selectPen = penArr.find(
+    el => Number(el.dataset.pen) === Number(idx + 1)
+  );
 
-// function loss() {}
+  selectLine.classList.add('active');
+  selectPen.classList.add('active');
+  fieldEl.removeEventListener('click', onClick);
+}
+
+function draw() {}
+
+function loss() {}

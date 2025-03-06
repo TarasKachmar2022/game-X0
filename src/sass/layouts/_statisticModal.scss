@@ -1,0 +1,8 @@
+.statistic__modal {
+  @extend .modal;
+  padding: 50px 30px;
+}
+
+.statistic__btn {
+  @extend .close-btn;
+}

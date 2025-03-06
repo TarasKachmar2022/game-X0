@@ -1,0 +1,55 @@
+.statistic-table {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  width: 640px;
+  margin: 0 auto;
+}
+
+.statistic-table__title {
+  font-size: 32px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -1px 1px 0 #fff;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th,
+td {
+  border: 2px solid black;
+}
+
+td {
+  text-align: center;
+  font-weight: 400;
+  padding: 0 10px;
+
+  &:first-child {
+    text-align: start;
+  }
+}
+
+.statistic-table__name {
+  width: 200px;
+}
+
+.statistic-table__win {
+  color: green;
+}
+
+.statistic-table__draw {
+  color: blue;
+}
+
+.statistic-table__loss {
+  color: red;
+}
+
+.statistic-table__total {
+  font-weight: 700;
+  width: 100px;
+}
