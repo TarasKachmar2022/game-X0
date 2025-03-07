@@ -1,0 +1,32 @@
+.draw__img {
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.draw__result {
+  font-size: 48px;
+  text-align: center;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -1px 1px 0 #fff;
+  margin-bottom: 10px;
+}
+
+.draw__message {
+  font-size: 28px;
+  text-align: center;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -1px 1px 0 #fff;
+  margin-bottom: 35px;
+}
+
+.draw__wrap {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.draw__btn {
+  @extend .btn;
+  min-width: 250px;
+}

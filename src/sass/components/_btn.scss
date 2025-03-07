@@ -8,40 +8,42 @@
   border: none;
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  background-color: yellow;
-  color: blue;
+  background-color: rgb(124, 123, 123);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   min-width: 200px;
   padding: 10px 32px;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2),
+    inset 0px 0px 10px rgba(255, 255, 255, 0.7);
   transition-property: background-color, color;
   transition-duration: var(--duration);
   transition-timing-function: var(--timing-function);
 
   &:hover,
   &:focus {
-    background-color: yellowgreen;
+    background-color: green;
     color: white;
   }
 }
 
-.btn--green {
-  background-color: rgb(73, 107, 0);
-  color: white;
-  transition-property: background-color;
-  transition-duration: var(--duration);
-  transition-timing-function: var(--timing-function);
+// .btn--green {
+//   background-color: rgb(73, 107, 0);
+//   color: white;
+//   transition-property: background-color;
+//   transition-duration: var(--duration);
+//   transition-timing-function: var(--timing-function);
 
-  &:hover,
-  &:focus {
-    background-color: green;
-  }
-}
+//   &:hover,
+//   &:focus {
+//     background-color: green;
+//   }
+// }
 
 .btn--red {
-  background-color: red;
+  background-color: rgb(124, 123, 123);
   color: white;
   transition-property: background-color;
   transition-duration: var(--duration);
