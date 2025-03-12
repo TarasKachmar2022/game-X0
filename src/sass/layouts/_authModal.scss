@@ -1,0 +1,102 @@
+.auth-backdrop {
+  @extend .backdrop;
+  background-image: url(./../images/bg-img.jpg);
+  z-index: 1;
+}
+
+.logup-modal,
+.login-modal {
+  @extend .modal;
+  width: 550px;
+  height: 550px;
+  padding: 50px;
+}
+
+.login-modal {
+  width: 550px;
+  height: 500px;
+}
+
+.auth-form__title {
+  font-size: 48px;
+  text-align: center;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -1px 1px 0 #fff;
+  margin-bottom: 50px;
+}
+
+.auth-form__group {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.auth-form__input {
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  height: auto;
+  padding: 5px 40px 5px 10px;
+  outline: none;
+}
+
+.auth-form__box .auth-form__group {
+  margin-bottom: 30px;
+}
+
+.auth-form__icon-password-shown,
+.auth-form__icon-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  fill: #818181;
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.auth-form__message {
+  position: absolute;
+  bottom: -20;
+  color: red;
+  opacity: 1;
+
+  &.is-hidden {
+    opacity: 0;
+  }
+}
+
+.auth-form__wrap {
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+.auth-form__btn {
+  @extend .btn;
+  display: inline-block;
+  min-width: 100px;
+
+  &:first-child {
+    margin-right: 10px;
+  }
+}
+
+.logup__btn {
+  font-size: 12px;
+  padding: 5px 16px;
+}
+
+.auth-form__text {
+  text-align: center;
+}
+
+.login-link,
+.signup-link {
+  color: blue;
+}

@@ -1,0 +1,25 @@
+.auth__wrap {
+  display: flex;
+  align-items: center;
+}
+
+.auth__list {
+  display: flex;
+  gap: 10px;
+}
+
+.auth__item {
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.signup-btn,
+.login-btn,
+.signOutBtn {
+  @extend .btn;
+  text-transform: capitalize;
+  color: white;
+  min-width: 50px;
+  padding: 2px 10px 2px 10px;
+}
