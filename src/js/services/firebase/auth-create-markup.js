@@ -53,7 +53,7 @@ export function createSignUpMarkup() {
         </div>
         <p class="auth-form__text">
           Вже зареєстровані?
-          <a href="#" class="login-link" id="linkSigninAccount">Увійти</a>
+          <a href="#" class="login-link js-login" id="linkSigninAccount">Увійти</a>
         </p>
       </form>
     </div>
@@ -98,7 +98,7 @@ export function createLoginMarkup() {
       </div>
       <p class="auth-form__text">
         Немає облікового запису?
-        <a href="#" class="signup-link" id="linkCreateAccount"
+        <a href="#" class="signup-link js-signup" id="linkCreateAccount"
           >Зареєструватися</a
         >
       </p>

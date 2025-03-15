@@ -1,8 +1,10 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from './firebase-config';
-import { createSignUpMarkup } from './auth-create-markup';
+import { createSignUpMarkup, createLoginMarkup } from './auth-create-markup';
 import { showGameMarkup } from '../../game/local-game';
+import { signupModal } from '../../layout/signupModal';
+import { signinModal } from '../../layout/signinModal';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -21,12 +23,26 @@ function openAuthModal() {
   }
 }
 
-function showSignUpModal() {
+export function showSignUpModal() {
+  const signupEl = document.querySelector('header .js-signup');
+  const signinEl = document.querySelector('header .js-login');
+
+  signupEl.closest('.auth__item').classList.add('is-hidden');
+  signinEl.closest('.auth__item').classList.remove('is-hidden');
+
   mainEl.innerHTML = createSignUpMarkup();
+  signupModal();
 }
 
-function showLoginModal() {
+export function showLoginModal() {
+  const signupEl = document.querySelector('header .js-signup');
+  const signinEl = document.querySelector('header .js-login');
+
+  signupEl.closest('.auth__item').classList.remove('is-hidden');
+  signinEl.closest('.auth__item').classList.add('is-hidden');
+
   mainEl.innerHTML = createLoginMarkup();
+  signinModal();
 }
 
 // function toggleShowPassword() {
