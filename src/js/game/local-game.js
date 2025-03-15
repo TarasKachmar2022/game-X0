@@ -5,14 +5,15 @@ import { wins } from '../components/win-config';
 import { victoryAnimation } from '../components/victory-animation';
 import { victory, draw, loss } from '../components/result';
 
-// const fieldThumbEl = document.querySelector('.field__thumb');
-const mainWrapEl = document.querySelector('.main__wrap');
+const bodyEl = document.querySelector('body');
+const fieldThumbEl = document.querySelector('.field__thumb');
+const fieldEl = document.querySelector('.field');
 const clickSound = document.getElementById('click__sound');
 
-showGameMarkup();
+// showGameMarkup();
 
-const fieldEl = document.querySelector('.field');
-
+// console.log(fieldEl);
+// console.log(clickSound);
 fieldEl.addEventListener('click', onClick);
 
 let player = 'X';
@@ -20,10 +21,16 @@ let historyx = [];
 let history0 = [];
 
 export function showGameMarkup() {
-  // const { markup, penMarkup } = createGameMarkup(penImage);
-  // fieldThumbEl.insertAdjacentHTML('beforebegin', penMarkup);
-  // fieldEl.innerHTML = markup;
-  mainWrapEl.innerHTML = createGameMarkup(penImage);
+  const mainWrapEl = document.querySelector('.main__wrap');
+
+  bodyEl.classList.add('cursor-pen');
+  mainWrapEl.classList.add('main__wrap--active');
+  fieldEl.classList.add('field--active');
+
+  const { markup, penMarkup } = createGameMarkup(penImage);
+
+  fieldThumbEl.insertAdjacentHTML('beforebegin', penMarkup);
+  fieldEl.innerHTML = markup;
 }
 // console.log(typeof wins);
 // console.log(typeof historyx);

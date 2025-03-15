@@ -1,31 +1,32 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { firebaseConfig } from './firebase-config';
-import { createSignUpModal } from './auth-create-markup';
+import { createSignUpMarkup } from './auth-create-markup';
 import { showGameMarkup } from '../../game/local-game';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-let logined = true;
+let logined = false;
+
+const mainEl = document.querySelector('.main__wrap');
 
 window.addEventListener('DOMContentLoaded', openAuthModal);
 
 function openAuthModal() {
   if (!logined) {
-    // showSignUpModal();
+    showSignUpModal();
   } else {
-    // showGameMarkup();
+    showGameMarkup();
   }
 }
 
 function showSignUpModal() {
-  // const authModalEl = document.querySelector('.auth');
+  mainEl.innerHTML = createSignUpMarkup();
+}
 
-  // authModalEl.innerHTML = createSignUpModal();
-  const mainEl = document.querySelector('.main');
-
-  mainEl.innerHTML = createSignUpModal();
+function showLoginModal() {
+  mainEl.innerHTML = createLoginMarkup();
 }
 
 // function toggleShowPassword() {
