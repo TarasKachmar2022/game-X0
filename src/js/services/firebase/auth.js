@@ -1,9 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { firebaseConfig } from './firebase-config';
 // import { createSignUpMarkup, createLoginMarkup } from './auth-create-markup';
 import { signupModal } from '../../layout/signupModal';
-
 import { showGameMarkup } from '../../game/local-game';
 
 const app = initializeApp(firebaseConfig);

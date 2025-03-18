@@ -1,5 +1,8 @@
+import Notiflix from 'notiflix';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { signinModal } from './signinModal';
 import { toggleShowPassword } from './../components/toggle-show-password';
+import { showGameMarkup } from './../game/local-game';
 
 export function signupModal() {
   const headerSignupBtnEl = document.querySelector('.js-signup-btn');
@@ -19,6 +22,7 @@ export function signupModal() {
   allBtn.forEach(el => el.addEventListener('click', onShowPasswordClick));
   headerLoginBtnEl.addEventListener('click', onLoginBtnClick);
   loginLinkEl.addEventListener('click', onLoginBtnClick);
+  signupFormEl.addEventListener('submit', onSignupSubmit);
 
   function onLoginBtnClick(e) {
     e.preventDefault();
@@ -43,5 +47,73 @@ export function signupModal() {
 
   function onShowPasswordClick(e) {
     toggleShowPassword(e);
+  }
+
+  function onSignupSubmit(e) {
+    e.preventDefault();
+
+    const { email } = e.target.elements;
+    const password = signupCheckPassword(e);
+
+    if (password) {
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, email.value, password.value.trim())
+        .then(userCredential => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          Notiflix.Notify.success(
+            `Користувача успішно створено! ${user.email}`,
+            {
+              timeout: 10000,
+              clickToClose: true,
+              position: 'left-top',
+              distance: '10px',
+            }
+          );
+          // closeAuthModal();
+          renderLoginForm();
+          // ...
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use')
+            Notiflix.Notify.failure('Email Вже використовується!', {
+              timeout: 10000,
+              clickToClose: true,
+              position: 'left-top',
+              distance: '10px',
+            });
+          if (error.code === 'auth/weak-password') {
+            Notiflix.Notify.failure('Пароль повинен містити 6 символів!', {
+              timeout: 10000,
+              clickToClose: true,
+              position: 'left-top',
+              distance: '10px',
+            });
+          }
+        });
+    }
+  }
+}
+
+function signupCheckPassword(e) {
+  const signupMessage = document.querySelectorAll(
+    '.js-signup-form .auth-form__message'
+  );
+
+  const { password, repeatpassword } = e.target.elements;
+
+  if (password.value.trim() === repeatpassword.value.trim()) {
+    signupMessage.forEach(el => {
+      if (el.classList.contains('show')) {
+        el.classList.remove('show');
+      }
+    });
+
+    return password;
+  } else {
+    signupMessage.forEach(el => el.classList.add('show'));
+
+    return;
   }
 }
