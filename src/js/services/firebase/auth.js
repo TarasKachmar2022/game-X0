@@ -1,27 +1,55 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { firebaseConfig } from './firebase-config';
 // import { createSignUpMarkup, createLoginMarkup } from './auth-create-markup';
-import { signupModal } from '../../layout/signupModal';
+import { signinModal } from '../../layout/signinModal';
 import { showGameMarkup } from '../../game/local-game';
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
 
-let logined = false;
-
-// const authModalEl = document.querySelector('.auth-modal');
+const headerAuthBtnsEl = document.querySelector('.auth__list');
 // const mainEl = document.querySelector('.main__wrap');
 
-window.addEventListener('DOMContentLoaded', openAuthModal);
+function checkAuthState() {
+  const auth = getAuth();
+
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      // Користувач залогінений
+      console.log('Користувач залогінений:', user);
+      // Можна відображати профіль користувача, наприклад:
+      // showUserProfile(user);
+      showLogOutBtn();
+      closeAuthModal();
+      showGameMarkup();
+    } else {
+      // Користувач не залогінений
+      openAuthModal();
+      signinModal();
+      console.log('Користувач не залогінений');
+      // Можна відображати форму для входу або реєстрації
+      // showLoginForm();
+    }
+  });
+}
+
+checkAuthState();
+
+// window.addEventListener('DOMContentLoaded', openAuthModal);
+
+// function openAuthModal() {
+//   if (!logined) {
+//     signinModal();
+//   } else {
+//     closeAuthModal();
+//     showGameMarkup();
+//   }
+// }
 
 function openAuthModal() {
-  if (!logined) {
-    signupModal();
-  } else {
-    closeAuthModal();
-    showGameMarkup();
-  }
+  const backdropModalEl = document.querySelector('.auth-backdrop');
+
+  backdropModalEl.classList.remove('is-hidden');
 }
 
 function closeAuthModal() {
@@ -30,17 +58,9 @@ function closeAuthModal() {
   backdropModalEl.classList.add('is-hidden');
 }
 
-// export function showSignUpModal() {
-//   // authModalEl.innerHTML = createSignUpMarkup();
-//   // headerBtnToggle();
-//   signupModal();
-// }
+function showLogOutBtn() {
+  const logOutBtnEl = document.querySelector('.logout-btn');
 
-// export function showLoginModal() {
-//   // mainEl.insertAdjacentHTML = ('beforeend', createLoginMarkup());
-
-//   // authModalEl.innerHTML = createLoginMarkup();
-//   // headerBtnToggle();
-//   signinModal();
-//   // toggleShowPassword();
-// }
+  headerAuthBtnsEl.classList.add('visually-hidden');
+  logOutBtnEl.classList.remove('is-hidden');
+}

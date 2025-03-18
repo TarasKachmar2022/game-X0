@@ -2,6 +2,9 @@
   @extend .backdrop;
   // background-image: url(./../images/bg-img.jpg);
   // z-index: 1;
+  &.is-hidden {
+    display: none;
+  }
 }
 
 .auth-modal {
