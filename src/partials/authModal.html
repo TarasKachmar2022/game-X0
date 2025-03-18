@@ -1,1 +1,132 @@
-<div class="auth"></div>
+<div class="auth">
+  <div class="auth-backdrop">
+    <div class="auth-modal">
+      <form class="auth__form" id="signup">
+        <h1 class="auth-form__title">Реєстрація</h1>
+        <div class="auth-form__group">
+          <input
+            type="email"
+            name="email"
+            class="auth-form__input"
+            placeholder="E-mail"
+          />
+        </div>
+        <div class="auth-form__box">
+          <div class="auth-form__group">
+            <input
+              type="password"
+              name="password"
+              class="auth-form__input"
+              data-input="signup-password"
+              placeholder="Пароль"
+            />
+            <div class="auth-form__icon-show-wrap is-hidden">
+              <svg
+                class="auth-form__icon-password-shown"
+                data-icon="signup-password"
+              >
+                <use href="./images/svg/sprite.svg#icon-show-password"></use>
+              </svg>
+            </div>
+            <div class="auth-form__icon-wrap">
+              <svg class="auth-form__icon-password" data-icon="signup-password">
+                <use
+                  href="./images/svg/sprite.svg#icon-not-show-password"
+                ></use>
+              </svg>
+            </div>
+          </div>
+          <div class="auth-form__group">
+            <input
+              type="password"
+              name="repeatpassword"
+              class="auth-form__input"
+              data-input="signup-repeat-password"
+              placeholder="Повторіть пароль"
+            />
+            <div class="auth-form__icon-show-wrap is-hidden">
+              <svg
+                class="auth-form__icon-password-shown"
+                data-icon="signup-repeat-password"
+              >
+                <use href="./images/svg/sprite.svg#icon-show-password"></use>
+              </svg>
+            </div>
+            <div class="auth-form__icon-wrap">
+              <svg
+                class="auth-form__icon-password"
+                data-icon="signup-repeat-password"
+              >
+                <use
+                  href="./images/svg/sprite.svg#icon-not-show-password"
+                ></use>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="auth-form__wrap">
+          <button class="auth-form__btn logup__btn" type="submit">
+            Зареєструватися</button
+          ><button
+            class="auth-form__btn logup__btn login-with-google-btn"
+            type="button"
+          >
+            Зареєструватися через Google
+          </button>
+        </div>
+        <p class="auth-form__text">
+          Вже зареєстровані?
+          <a href="#" class="login-link js-login-link" id="linkSigninAccount"
+            >Увійти</a
+          >
+        </p>
+      </form>
+      <form class="auth__form visually-hidden" id="login">
+        <h1 class="auth-form__title">Логін</h1>
+        <div class="auth-form__group">
+          <input
+            type="email"
+            name="email"
+            class="auth-form__input"
+            placeholder="E-mail"
+          />
+          <div class="auth-form__message">Недійсна електронна адреса</div>
+        </div>
+        <div class="auth-form__group">
+          <input
+            type="password"
+            name="password"
+            class="auth-form__input"
+            data-input="login-password"
+            placeholder="Пароль"
+          />
+          <div class="auth-form__icon-show-wrap is-hidden">
+            <svg
+              class="auth-form__icon-password-shown"
+              data-icon="login-password"
+            >
+              <use href="./images/svg/sprite.svg#icon-show-password"></use>
+            </svg>
+          </div>
+          <div class="auth-form__icon-wrap">
+            <svg class="auth-form__icon-password" data-icon="login-password">
+              <use href="./images/svg/sprite.svg#icon-not-show-password"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="auth-form__wrap">
+          <button class="auth-form__btn" type="submit">Увійти</button>
+          <button class="auth-form__btn login-with-google-btn" type="button">
+            Увійти через Google
+          </button>
+        </div>
+        <p class="auth-form__text">
+          Немає облікового запису?
+          <a href="#" class="signup-link js-signup-link" id="linkCreateAccount"
+            >Зареєструватися</a
+          >
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

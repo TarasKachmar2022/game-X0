@@ -10,10 +10,6 @@ const fieldThumbEl = document.querySelector('.field__thumb');
 const fieldEl = document.querySelector('.field');
 const clickSound = document.getElementById('click__sound');
 
-// showGameMarkup();
-
-// console.log(fieldEl);
-// console.log(clickSound);
 fieldEl.addEventListener('click', onClick);
 
 let player = 'X';

@@ -1,21 +1,26 @@
 .auth-backdrop {
   @extend .backdrop;
-  background-image: url(./../images/bg-img.jpg);
-  z-index: 1;
+  // background-image: url(./../images/bg-img.jpg);
+  // z-index: 1;
 }
 
-.logup-modal,
-.login-modal {
+.auth-modal {
   @extend .modal;
   width: 550px;
   height: 550px;
   padding: 50px;
 }
 
-.login-modal {
-  width: 550px;
-  height: 500px;
+.auth__form {
+  &.is-hidden {
+    display: none;
+  }
 }
+
+// .signin-modal {
+//   width: 550px;
+//   height: 500px;
+// }
 
 .auth-form__title {
   font-size: 48px;
@@ -30,7 +35,9 @@
   margin-bottom: 40px;
 }
 
-.auth-form__input {
+.auth-form__input,
+.signup-form__input,
+.login-form__input {
   font-size: 20px;
   border: none;
   border-radius: 4px;
@@ -45,7 +52,9 @@
 }
 
 .auth-form__icon-password-shown,
+.auth-form__icon-repeat-password-shown,
 .auth-form__icon-password {
+  display: block;
   position: absolute;
   top: 50%;
   right: 10px;
@@ -55,9 +64,9 @@
   cursor: pointer;
   fill: #818181;
 
-  &.is-hidden {
-    display: none;
-  }
+  // &.is-hidden {
+  //   display: none;
+  // }
 }
 
 .auth-form__message {

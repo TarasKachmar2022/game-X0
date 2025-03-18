@@ -24,7 +24,7 @@ export function createGameMarkup(penImage) {
   return { markup, penMarkup };
 }
 
-//   return `
+// return `
 //        <div class="winner"></div>
 //         <div class="field__wrap">
 //           <div class="field__thumb">
@@ -39,4 +39,3 @@ export function createGameMarkup(penImage) {
 //             </div>
 //             </div>
 //             </div>`;
-// }

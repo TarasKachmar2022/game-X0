@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(17, 8, 2, 0.6);
+  background-color: rgba(17, 8, 2, 0.4);
   backdrop-filter: blur(4px);
   transition-property: opacity, visibility;
   transition-duration: var(--duration);
@@ -28,7 +28,7 @@
   transform: translate(-50%, -47%) scaleY(1);
   width: 700px;
   height: 800px;
-  background-color: white;
+  background-color: silver;
   background-image: url(./../images/modal-bg-img.jpg);
   border-radius: 10px;
   padding: 10px;
