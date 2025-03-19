@@ -1,12 +1,22 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
+import Notiflix from 'notiflix';
+import { STATE } from './../../components/state';
+import {
+  getAuth,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 import { firebaseConfig } from './firebase-config';
 // import { createSignUpMarkup, createLoginMarkup } from './auth-create-markup';
+import { save } from './../../components/localStorage';
 import { signinModal } from '../../layout/signinModal';
 import { showGameMarkup } from '../../game/local-game';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const provider = new GoogleAuthProvider();
 
 const headerAuthBtnsEl = document.querySelector('.auth__list');
 const logOutBtnEl = document.querySelector('.logout-btn');
@@ -61,6 +71,43 @@ function closeAuthModal() {
 function onLogOutBtn() {
   headerAuthBtnsEl.classList.toggle('visually-hidden');
   logOutBtnEl.classList.toggle('is-hidden');
+}
+
+export function loginWithGoogle() {
+  // signInWithPopup(auth, provider)
+  signInWithPopup(auth, provider)
+    .then(userCredential => {
+      const user = userCredential.user;
+      Notiflix.Notify.success(
+        'Ви ввійшли в обліковий запис за допомогою Google',
+        {
+          timeout: 10000,
+          clickToClose: true,
+          position: 'left-top',
+          distance: '10px',
+        }
+      );
+      STATE.user.uid = user.uid;
+      console.log('STATE: ', STATE);
+      save('STATE', STATE);
+      // switchBtns(STATE.user.uid);
+      closeAuthModal();
+    })
+    .catch(err => {
+      if (
+        err.code === 'auth/popup-closed-by-user' ||
+        err.code === 'auth/cancelled-popup-request'
+      ) {
+        return;
+      }
+      Notiflix.Notify.failure(`${err.code}`, {
+        timeout: 10000,
+        clickToClose: true,
+        position: 'left-top',
+        distance: '10px',
+      });
+      console.log(err);
+    });
 }
 
 function logoutUser() {

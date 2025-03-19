@@ -1,1 +1,5 @@
-export function switchBtns(boolean) {}
+let boolean = false;
+export function switchBtns(boolean) {
+  if (boolean) {
+  }
+}

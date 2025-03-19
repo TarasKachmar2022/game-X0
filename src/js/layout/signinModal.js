@@ -1,3 +1,4 @@
+import { loginWithGoogle } from './../services/firebase/auth';
 import { signupModal } from './signupModal';
 import { toggleShowPassword } from './../components/toggle-show-password';
 
@@ -5,6 +6,9 @@ export function signinModal() {
   const headerSignupBtnEl = document.querySelector('.js-signup-btn');
   const headerLoginBtnEl = document.querySelector('.js-login-btn');
   const signupLinkEl = document.querySelector('.js-signup-link');
+  const loginWithGoogleBtnEl = document.querySelector(
+    '.js-login-with-google-btn'
+  );
   const signupFormEl = document.getElementById('signup');
   const loginFormEl = document.getElementById('login');
   const authFormIconArrEl = document.querySelectorAll(
@@ -19,6 +23,8 @@ export function signinModal() {
   allBtn.forEach(el => el.addEventListener('click', onShowPasswordClick));
   headerSignupBtnEl.addEventListener('click', onSignupBtnClick);
   signupLinkEl.addEventListener('click', onSignupBtnClick);
+  loginFormEl.addEventListener('click', onLoginSubmit);
+  loginWithGoogleBtnEl.addEventListener('click', loginWithGoogle);
 
   function onSignupBtnClick(e) {
     e.preventDefault();
@@ -33,8 +39,6 @@ export function signinModal() {
   }
 
   function showHeaderLoginBtn() {
-    // const headerSignupBtnEl = document.querySelector('.js-signup-btn');
-
     headerSignupBtnEl.closest('.auth__item').classList.add('is-hidden');
     headerLoginBtnEl.closest('.auth__item').classList.remove('is-hidden');
   }
@@ -46,5 +50,9 @@ export function signinModal() {
 
   function onShowPasswordClick(e) {
     toggleShowPassword(e);
+  }
+
+  function onLoginSubmit(e) {
+    e.preventDefault();
   }
 }

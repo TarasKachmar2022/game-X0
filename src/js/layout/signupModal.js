@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import { STATE } from './../components/state';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { loginWithGoogle } from './../services/firebase/auth';
 import { signinModal } from './signinModal';
 import { toggleShowPassword } from './../components/toggle-show-password';
 import { showGameMarkup } from './../game/local-game';
@@ -9,6 +10,9 @@ export function signupModal() {
   const headerSignupBtnEl = document.querySelector('.js-signup-btn');
   const headerLoginBtnEl = document.querySelector('.js-login-btn');
   const loginLinkEl = document.querySelector('.js-login-link');
+  const signupWithGoogleBtnEl = document.querySelector(
+    '.js-signup-with-google-btn'
+  );
   const signupFormEl = document.getElementById('signup');
   const loginFormEl = document.getElementById('login');
   const authFormIconArrEl = document.querySelectorAll(
@@ -24,9 +28,11 @@ export function signupModal() {
   headerLoginBtnEl.addEventListener('click', onLoginBtnClick);
   loginLinkEl.addEventListener('click', onLoginBtnClick);
   signupFormEl.addEventListener('submit', onSignupSubmit);
+  signupWithGoogleBtnEl.addEventListener('click', loginWithGoogle);
 
   function onLoginBtnClick(e) {
     e.preventDefault();
+
     showHeaderSignupBtn();
     signinModal();
     renderLoginForm();
@@ -72,9 +78,7 @@ export function signupModal() {
               distance: '10px',
             }
           );
-          console.log(STATE);
           STATE.user.uid = user.uid;
-          console.log(STATE);
           save('STATE', STATE);
           console.log(STATE);
           renderLoginForm();
