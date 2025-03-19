@@ -1,0 +1,25 @@
+.score {
+  display: none;
+
+  &--active {
+    display: block;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    font-weight: 700;
+    font-size: 50px;
+  }
+}
+.score__title {
+}
+.score__thumb {
+}
+.score__playerx {
+}
+.scorex {
+}
+.score__player0 {
+}
+.score0 {
+}

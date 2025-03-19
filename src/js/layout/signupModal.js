@@ -1,10 +1,10 @@
 import Notiflix from 'notiflix';
 import { STATE } from './../components/state';
+import { save } from './../components/localStorage';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { loginWithGoogle } from './../services/firebase/auth';
 import { signinModal } from './signinModal';
 import { toggleShowPassword } from './../components/toggle-show-password';
-import { showGameMarkup } from './../game/local-game';
 
 export function signupModal() {
   const headerSignupBtnEl = document.querySelector('.js-signup-btn');
@@ -81,7 +81,7 @@ export function signupModal() {
           STATE.user.uid = user.uid;
           save('STATE', STATE);
           console.log(STATE);
-          renderLoginForm();
+          // switchBtns(STATE.user.uid);
           // ...
         })
         .catch(error => {

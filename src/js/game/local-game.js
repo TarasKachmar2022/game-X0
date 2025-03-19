@@ -7,6 +7,7 @@ import { victory, draw, loss } from '../components/result';
 
 const bodyEl = document.querySelector('body');
 const fieldThumbEl = document.querySelector('.field__thumb');
+const scoreEl = document.querySelector('.score');
 const fieldEl = document.querySelector('.field');
 const clickSound = document.getElementById('click__sound');
 
@@ -21,6 +22,7 @@ export function showGameMarkup() {
 
   bodyEl.classList.add('cursor-pen');
   mainWrapEl.classList.add('main__wrap--active');
+  scoreEl.classList.add('score--active');
   fieldEl.classList.add('field--active');
 
   const { markup, penMarkup } = createGameMarkup(penImage);

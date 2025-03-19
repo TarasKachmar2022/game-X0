@@ -17,19 +17,11 @@ main {
 .field__thumb {
 }
 
-.winner {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -20%);
-  font-size: 50px;
-}
-
 .field__wrap {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40%);
 }
 
 .field__svg {

@@ -9,7 +9,6 @@ import {
   signOut,
 } from 'firebase/auth';
 import { firebaseConfig } from './firebase-config';
-// import { createSignUpMarkup, createLoginMarkup } from './auth-create-markup';
 import { save } from './../../components/localStorage';
 import { signinModal } from '../../layout/signinModal';
 import { showGameMarkup } from '../../game/local-game';
@@ -29,8 +28,6 @@ function checkAuthState() {
     if (user) {
       // Користувач залогінений
       console.log('Користувач залогінений:', user);
-      // Можна відображати профіль користувача, наприклад:
-      // showUserProfile(user);
       onLogOutBtn();
       closeAuthModal();
       showGameMarkup();
@@ -46,15 +43,6 @@ function checkAuthState() {
 checkAuthState();
 
 // window.addEventListener('DOMContentLoaded', openAuthModal);
-
-// function openAuthModal() {
-//   if (!logined) {
-//     signinModal();
-//   } else {
-//     closeAuthModal();
-//     showGameMarkup();
-//   }
-// }
 
 function openAuthModal() {
   const backdropModalEl = document.querySelector('.auth-backdrop');
@@ -93,20 +81,13 @@ export function loginWithGoogle() {
       // switchBtns(STATE.user.uid);
       closeAuthModal();
     })
-    .catch(err => {
-      if (
-        err.code === 'auth/popup-closed-by-user' ||
-        err.code === 'auth/cancelled-popup-request'
-      ) {
-        return;
-      }
-      Notiflix.Notify.failure(`${err.code}`, {
+    .catch(error => {
+      Notiflix.Notify.failure(`${error.code} ${error.message}`, {
         timeout: 10000,
         clickToClose: true,
         position: 'left-top',
         distance: '10px',
       });
-      console.log(err);
     });
 }
 
@@ -114,8 +95,14 @@ function logoutUser() {
   signOut(auth)
     .then(() => {
       // Видалення даних з LocalStorage при розлогіненні
-      // localStorage.removeItem('user');
+      localStorage.removeItem('STATE');
       console.log('Користувач розлогінений');
+      Notiflix.Notify.failure('Ви вийшли з системи!', {
+        timeout: 10000,
+        clickToClose: true,
+        position: 'left-top',
+        distance: '10px',
+      });
       // Можна відобразити форму для входу
       onLogOutBtn();
       openAuthModal();
@@ -130,11 +117,11 @@ function logoutUser() {
 function hideGameMarkup() {
   const bodyEl = document.querySelector('body');
   const mainWrapEl = document.querySelector('.main__wrap');
-  const winnerEl = document.querySelector('.winner');
+  const scoreEl = document.querySelector('.score');
   const fieldEl = document.querySelector('.field');
 
   bodyEl.classList.remove('cursor-pen');
   mainWrapEl.classList.remove('main__wrap--active');
-  winnerEl.classList.add('is-hidden');
+  scoreEl.classList.remove('score--active');
   fieldEl.classList.remove('field--active');
 }
