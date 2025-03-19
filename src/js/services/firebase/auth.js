@@ -21,7 +21,7 @@ function checkAuthState() {
       console.log('Користувач залогінений:', user);
       // Можна відображати профіль користувача, наприклад:
       // showUserProfile(user);
-      showLogOutBtn();
+      onLogOutBtn();
       closeAuthModal();
       showGameMarkup();
     } else {
@@ -29,8 +29,6 @@ function checkAuthState() {
       openAuthModal();
       signinModal();
       console.log('Користувач не залогінений');
-      // Можна відображати форму для входу або реєстрації
-      // showLoginForm();
     }
   });
 }
@@ -60,18 +58,19 @@ function closeAuthModal() {
   backdropModalEl.classList.add('is-hidden');
 }
 
-function showLogOutBtn() {
-  headerAuthBtnsEl.classList.add('visually-hidden');
-  logOutBtnEl.classList.remove('is-hidden');
+function onLogOutBtn() {
+  headerAuthBtnsEl.classList.toggle('visually-hidden');
+  logOutBtnEl.classList.toggle('is-hidden');
 }
 
 function logoutUser() {
   signOut(auth)
     .then(() => {
       // Видалення даних з LocalStorage при розлогіненні
-      localStorage.removeItem('user');
+      // localStorage.removeItem('user');
       console.log('Користувач розлогінений');
       // Можна відобразити форму для входу
+      onLogOutBtn();
       openAuthModal();
       signinModal();
       hideGameMarkup();
@@ -84,9 +83,11 @@ function logoutUser() {
 function hideGameMarkup() {
   const bodyEl = document.querySelector('body');
   const mainWrapEl = document.querySelector('.main__wrap');
+  const winnerEl = document.querySelector('.winner');
   const fieldEl = document.querySelector('.field');
 
   bodyEl.classList.remove('cursor-pen');
   mainWrapEl.classList.remove('main__wrap--active');
+  winnerEl.classList.add('is-hidden');
   fieldEl.classList.remove('field--active');
 }

@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { STATE } from './../components/state';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { signinModal } from './signinModal';
 import { toggleShowPassword } from './../components/toggle-show-password';
@@ -71,7 +72,11 @@ export function signupModal() {
               distance: '10px',
             }
           );
-          // closeAuthModal();
+          console.log(STATE);
+          STATE.user.uid = user.uid;
+          console.log(STATE);
+          save('STATE', STATE);
+          console.log(STATE);
           renderLoginForm();
           // ...
         })
@@ -93,6 +98,8 @@ export function signupModal() {
           }
         });
     }
+
+    signupFormEl.reset();
   }
 }
 
