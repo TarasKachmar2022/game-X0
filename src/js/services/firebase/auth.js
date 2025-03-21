@@ -11,7 +11,9 @@ import {
 import { firebaseConfig } from './firebase-config';
 import { save } from './../../components/localStorage';
 import { signinModal } from '../../layout/signinModal';
-import { showGameMarkup } from '../../game/local-game';
+import { openModal, closeModal } from '../../components/modal';
+import { showSelectMode } from './../../layout/selectMode';
+import { showGameMarkup } from '../../game/local-mode';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
@@ -30,11 +32,14 @@ function checkAuthState() {
       console.log('Користувач залогінений:', user);
       onLogOutBtn();
       closeAuthModal();
-      showGameMarkup();
+      openModal();
+      showSelectMode();
+      // showGameMarkup();
     } else {
       // Користувач не залогінений
       openAuthModal();
       signinModal();
+      closeModal();
       console.log('Користувач не залогінений');
     }
   });

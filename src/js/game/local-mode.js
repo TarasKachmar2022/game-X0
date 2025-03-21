@@ -16,6 +16,9 @@ fieldEl.addEventListener('click', onClick);
 const localState = {
   scorePlayer1: 0,
   scorePlayer2: 0,
+  playerName1: '',
+  playerName2: '',
+  currentPlayer: '',
   player: 'X',
   historyx: [],
   history0: [],
@@ -109,7 +112,7 @@ export function checkWins() {
       console.log(playerX, winnerXIdx);
 
       // console.log('win');
-      winnerEl.textContent = 'Winner PlayerX';
+      // winnerEl.textContent = 'Winner PlayerX';
     } else if (isWinner0) {
       winner0Idx = WINS.findIndex(item =>
         item.every(id => localState.history0.includes(id))
@@ -118,7 +121,7 @@ export function checkWins() {
       fieldEl.removeEventListener('click', onClick);
       console.log(player0, winner0Idx);
 
-      winnerEl.textContent = 'Winner Player0';
+      // winnerEl.textContent = 'Winner Player0';
     } else if (localState.historyx.length + localState.history0.length === 9) {
       // reset();
       draw();
