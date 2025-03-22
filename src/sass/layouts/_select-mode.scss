@@ -1,4 +1,4 @@
-.mod__wrap {
+.select-mode__wrap {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +6,7 @@
   gap: 50px;
 }
 
-.mod__btn {
+.select-mode__btn {
   @extend .btn;
   height: 80px;
   min-width: 250px;

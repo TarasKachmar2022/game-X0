@@ -1,0 +1,13 @@
+.select-level__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.select-level__btn {
+  @extend .btn;
+  height: 80px;
+  min-width: 250px;
+}

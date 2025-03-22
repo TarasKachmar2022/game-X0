@@ -12,7 +12,7 @@ import { firebaseConfig } from './firebase-config';
 import { save } from './../../components/localStorage';
 import { signinModal } from '../../layout/signinModal';
 import { openModal, closeModal } from '../../components/modal';
-import { showSelectMode } from './../../layout/selectMode';
+import { showSelectMode } from '../../layout/select-mode';
 import { showGameMarkup } from '../../game/local-mode';
 
 const app = initializeApp(firebaseConfig);

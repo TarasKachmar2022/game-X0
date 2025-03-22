@@ -10,17 +10,11 @@ export const STATE = {
     uid: '',
     bot: {
       level: null,
-      players: [
-        {
-          playerId: '',
-          playerName: '',
-          statistics: {
-            easy: { wins: 0, draws: 0, losses: 0, total: 0 },
-            medium: { wins: 0, draws: 0, losses: 0, total: 0 },
-            hard: { wins: 0, draws: 0, losses: 0, total: 0 },
-          },
-        },
-      ],
+      statistics: {
+        easy: { wins: 0, draws: 0, losses: 0, total: 0 },
+        medium: { wins: 0, draws: 0, losses: 0, total: 0 },
+        hard: { wins: 0, draws: 0, losses: 0, total: 0 },
+      },
     },
     local: {
       players: [

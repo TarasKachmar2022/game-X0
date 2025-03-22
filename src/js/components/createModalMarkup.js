@@ -2,10 +2,21 @@ export function createSelectModeModalMarkup() {
   return `<div class="hero">
   <span class="hero__title">Виберіть режим гри</span>
 </div>
-<div class="mod__wrap">
-  <button class="mod__btn" data-mode="bot">Проти комп'ютера</button>
-  <button class="mod__btn" data-mode="local">Гра удвох</button>
-  <button class="mod__btn" data-mode="online">Мережева гра</button>
+<div class="select-mode__wrap">
+  <button class="select-mode__btn" data-mode="bot">Проти комп'ютера</button>
+  <button class="select-mode__btn" data-mode="local">Гра удвох</button>
+  <button class="select-mode__btn" data-mode="online">Мережева гра</button>
+</div>`;
+}
+
+export function createSelectLevelModalMarkup() {
+  return `<div class="hero">
+  <span class="hero__title">Виберіть рівень складності</span>
+</div>
+<div class="select-level__wrap">
+  <button class="select-level__btn" data-level="easy">Легкий</button>
+  <button class="select-level__btn" data-level="medium">Середній</button>
+  <button class="select-level__btn" data-level="hard">Важкий</button>
 </div>`;
 }
 
