@@ -1,4 +1,4 @@
-.create-modal__title {
+.create-player__title {
   font-size: 32px;
   text-align: center;
   text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
@@ -6,7 +6,7 @@
   margin-bottom: 60px;
 }
 
-.create-modal__input {
+.create-player__input {
   font-size: 20px;
   line-height: 1.5;
   border: none;
@@ -15,9 +15,10 @@
   height: auto;
   outline: none;
   padding: 5px 40px 5px 10px;
+  margin-bottom: 5px;
 }
 
-.create-modal__warning {
+.create-player__message {
   text-align: center;
   color: red;
   margin-bottom: 60px;
@@ -25,18 +26,19 @@
   transition-property: opacity;
   transition-duration: var(--duration);
   transition-timing-function: var(--timing-function);
+  z-index: 20;
 
   &--shown {
     opacity: 1;
   }
 }
 
-.create-modal__btn-wrap {
+.create-player__btn-wrap {
   display: flex;
   justify-content: space-around;
 }
 
-.create-modal__btn {
+.create-player__btn {
   @extend .btn;
   min-width: 100px;
 

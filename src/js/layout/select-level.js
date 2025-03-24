@@ -1,5 +1,5 @@
 import { STATE } from '../components/state';
-import { createSelectLevelModalMarkup } from './../components/createModalMarkup';
+import { createSelectLevelModalMarkup } from '../components/create-modal-markup';
 
 const modalEl = document.querySelector('.modal');
 

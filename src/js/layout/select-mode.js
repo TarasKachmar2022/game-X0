@@ -1,5 +1,5 @@
 import { STATE } from '../components/state';
-import { createSelectModeModalMarkup } from '../components/createModalMarkup';
+import { createSelectModeModalMarkup } from '../components/create-modal-markup';
 import { showSelectPlayersModalMarkup } from './select-players';
 import { showSelectLevelModalMarkup } from './select-level';
 
