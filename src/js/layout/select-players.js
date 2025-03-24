@@ -5,7 +5,7 @@ import {
 import {
   showCreatePlayerModal,
   hideCreatePlayerModal,
-} from './create-player-modal';
+} from './add-player-modal';
 
 const modalEl = document.querySelector('.modal');
 // const createPlayerModalEl = document.querySelector('.backdrop--small');

@@ -1,5 +1,6 @@
+import Notiflix from 'notiflix';
 import { STATE } from './../components/state';
-import { createPlayerModalMarkup } from '../components/create-modal-markup';
+import { createAddPlayerModalMarkup } from '../components/create-modal-markup';
 
 const createPlayerModalEl = document.querySelector('.backdrop--small');
 const createModalEl = document.querySelector('.modal--small');
@@ -20,7 +21,7 @@ function createPlayerModalEvent(e) {
 
 export function showCreatePlayerModal() {
   createPlayerModalEl.classList.remove('is-hidden');
-  createModalEl.innerHTML = createPlayerModalMarkup();
+  createModalEl.innerHTML = createAddPlayerModalMarkup();
 }
 
 function hideCreatePlayerModal() {
@@ -29,7 +30,7 @@ function hideCreatePlayerModal() {
 
 function onSubmitClick() {
   const formEl = document.getElementById('add-player');
-  const messageEl = document.querySelector('.create-player__message');
+  const messageEl = document.querySelector('.add-player__message');
 
   const { value } = formEl.elements.playername;
   const { players } = STATE.user.local;
@@ -37,12 +38,12 @@ function onSubmitClick() {
     const findedPlayer = players.find(player => player.playerName === value);
     if (findedPlayer) {
       messageEl.textContent = "Гравець з таким ім'ям уже існує!";
-      messageEl.classList.add('create-player__message--shown');
+      messageEl.classList.add('add-player__message--shown');
 
       return;
     } else {
-      if (messageEl.classList.contains('create-player__message--shown')) {
-        messageEl.classList.remove('create-player__message--shown');
+      if (messageEl.classList.contains('add-player__message--shown')) {
+        messageEl.classList.remove('add-player__message--shown');
       }
 
       const obj = {
@@ -53,10 +54,17 @@ function onSubmitClick() {
 
       players.push(obj);
 
+      Notiflix.Notify.success(`Гравця успішно додано!`, {
+        timeout: 6000,
+        clickToClose: true,
+        position: 'left-top',
+        distance: '10px',
+      });
+
       hideCreatePlayerModal();
     }
   } else {
     messageEl.textContent = 'Поле не може бути пустим!';
-    messageEl.classList.add('create-player__message--shown');
+    messageEl.classList.add('add-player__message--shown');
   }
 }

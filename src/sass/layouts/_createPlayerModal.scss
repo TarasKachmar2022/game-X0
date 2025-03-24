@@ -1,4 +1,4 @@
-.create-player__title {
+.add-player__title {
   font-size: 32px;
   text-align: center;
   text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
@@ -6,12 +6,12 @@
   margin-bottom: 60px;
 }
 
-.create-player__wrap {
+.add-player__wrap {
   position: relative;
   margin-bottom: 60px;
 }
 
-.create-player__input {
+.add-player__input {
   font-size: 20px;
   line-height: 1.5;
   border: none;
@@ -23,7 +23,7 @@
   margin-bottom: 5px;
 }
 
-.create-player__message {
+.add-player__message {
   position: absolute;
   bottom: -40%;
   left: 50%;
@@ -42,12 +42,12 @@
   }
 }
 
-.create-player__btn-wrap {
+.add-player__btn-wrap {
   display: flex;
   justify-content: space-around;
 }
 
-.create-player__btn {
+.add-player__btn {
   @extend .btn;
   min-width: 100px;
 

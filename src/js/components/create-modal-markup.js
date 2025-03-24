@@ -45,22 +45,46 @@ export function createSelectPlayersModalMarkup() {
     </form>`;
 }
 
-export function createPlayerModalMarkup() {
+export function createAddPlayerModalMarkup() {
   return `<button class="close-btn js-close-modal">Х</button>
     <form class="" name="newuser" autocomplete="off" id="add-player">
-      <p class="create-player__title">Створення нового гравця</p>
-      <div class="create-player__wrap">
+      <p class="add-player__title">Створення нового гравця</p>
+      <div class="add-player__wrap">
       <input
-        class="create-player__input"
+        class="add-player__input"
         type="text"
         name="playername"
         placeholder="Введіть ім'я гравця"
       />
-      <p class="create-player__message"></p>
+      <p class="add-player__message"></p>
 </div>
-      <div class="create-player__btn-wrap">
-        <button class="create-player__btn js-add-player" type="submit">Створити</button>
-        <button class="create-player__btn js-close-modal">Відмінити</button>
+      <div class="add-player__btn-wrap">
+        <button class="add-player__btn js-add-player" type="submit">Створити</button>
+        <button class="add-player__btn js-close-modal">Відмінити</button>
       </div>
     </form>`;
 }
+
+export function createDeletePlayerModalMarkup() {
+  return `<button class="close-btn js-close-modal">Х</button>
+    <form class="" name="newuser" autocomplete="off" id="add-player">
+      <p class="delete-player__title">Створення нового гравця</p>
+      <div class="delete-player__wrap">
+      <select class="" id="deleteuser" name="deleteuser">
+  <option value="">text</option>
+</select>
+<p class="delete-player__message"></p>
+</div>
+<div class="delete-player__btn-wrap">
+<button class="delete-player__btn js-add-player" type="submit">Створити</button>
+<button class="delete-player__btn js-close-modal">Відмінити</button>
+</div>
+</form>`;
+}
+
+/* <input
+  class="delete-player__input"
+  type="text"
+  name="playername"
+  placeholder="Введіть ім'я гравця"
+/> */
