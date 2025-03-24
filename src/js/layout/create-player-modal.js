@@ -33,26 +33,30 @@ function onSubmitClick() {
 
   const { value } = formEl.elements.playername;
   const { players } = STATE.user.local;
+  if (value) {
+    const findedPlayer = players.find(player => player.playerName === value);
+    if (findedPlayer) {
+      messageEl.textContent = "Гравець з таким ім'ям уже існує!";
+      messageEl.classList.add('create-player__message--shown');
 
-  const findedPlayer = players.find(player => player.playerName === value);
-  if (findedPlayer) {
-    messageEl.textContent = "Гравець з таким ім'ям уже існує!";
-    messageEl.classList.add('create-player__message--shown');
+      return;
+    } else {
+      if (messageEl.classList.contains('create-player__message--shown')) {
+        messageEl.classList.remove('create-player__message--shown');
+      }
 
-    return;
-  } else {
-    if (messageEl.classList.contains('create-player__message--shown')) {
-      messageEl.classList.remove('create-player__message--shown');
+      const obj = {
+        playerId: players.length,
+        playerName: value,
+        statistics: { wins: 0, draws: 0, losses: 0, total: 0 },
+      };
+
+      players.push(obj);
+
+      hideCreatePlayerModal();
     }
-
-    const obj = {
-      playerId: players.length,
-      playerName: value,
-      statistics: { wins: 0, draws: 0, losses: 0, total: 0 },
-    };
-
-    players.push(obj);
-
-    hideCreatePlayerModal();
+  } else {
+    messageEl.textContent = 'Поле не може бути пустим!';
+    messageEl.classList.add('create-player__message--shown');
   }
 }

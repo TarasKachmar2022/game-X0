@@ -49,6 +49,7 @@ export function createPlayerModalMarkup() {
   return `<button class="close-btn js-close-modal">Х</button>
     <form class="" name="newuser" autocomplete="off" id="add-player">
       <p class="create-player__title">Створення нового гравця</p>
+      <div class="create-player__wrap">
       <input
         class="create-player__input"
         type="text"
@@ -56,6 +57,7 @@ export function createPlayerModalMarkup() {
         placeholder="Введіть ім'я гравця"
       />
       <p class="create-player__message"></p>
+</div>
       <div class="create-player__btn-wrap">
         <button class="create-player__btn js-add-player" type="submit">Створити</button>
         <button class="create-player__btn js-close-modal">Відмінити</button>
