@@ -32,14 +32,14 @@ export function createSelectPlayersModalMarkup() {
         <div class="select-player__thumb">
           <label for="player1" class="select-player__label">Гравець 1</label>
           <select class="select-player__select js-first-select" id="player1" name="player1">
-          
           </select>
+          <p class="select-player__player1-message form__message">Виберіть гравця!</p>
         </div>
         <div class="select-player__thumb">
           <label for="player2" class="select-player__label">Гравець 2</label>
           <select class="select-player__select js-second-select" id="player2" name="player2">
-            <option value="none">Виберіть гравця</option>
           </select>
+          <p class="select-player__player2-message form__message">Виберіть гравця!</p>
         </div>
       </div>
       <button class="select-player__start js-start-game">Почати гру</button>
@@ -74,7 +74,7 @@ export function createDeletePlayerModalMarkup() {
       <div class="player-modal__wrap">
       <select class="delete-player__select" id="deleteuser" name="deleteuser">
 </select>
-<p class="player-modal__message"></p>
+<p class="js-delete-message form__message">Виберіть гравця!</p>
 </div>
 <div class="player-modal__btn-wrap">
 <button class="delete-player__btn js-delete-player" type="submit">Видалити</button>

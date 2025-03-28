@@ -123,6 +123,25 @@ export function createSecondSelectMarkup() {
 }
 
 function onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer) {
+  const firstPlayerMessageEl = document.querySelector(
+    '.select-player__player1-message'
+  );
+  const secondPlayerMessageEl = document.querySelector(
+    '.select-player__player2-message'
+  );
+
+  if (firstCurrentPlayer === '' || firstCurrentPlayer === 'Виберіть гравця') {
+    firstPlayerMessageEl.classList.add('show');
+  } else {
+    firstPlayerMessageEl.classList.remove('show');
+  }
+
+  if (secondCurrentPlayer === '' || secondCurrentPlayer === 'Виберіть гравця') {
+    secondPlayerMessageEl.classList.add('show');
+  } else {
+    secondPlayerMessageEl.classList.remove('show');
+  }
+
   if (
     firstCurrentPlayer &&
     firstCurrentPlayer !== 'Виберіть гравця' &&
@@ -131,8 +150,6 @@ function onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer) {
   ) {
     showGameMarkup();
     closeModal();
-  } else {
-    // Додати повідомлення що не вибрані гравці!
   }
 }
 

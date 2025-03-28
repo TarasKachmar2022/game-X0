@@ -107,11 +107,12 @@ function onSubmitClick() {
 
 function onDeleteBtnClick() {
   const deleteFormEl = document.getElementById('delete-player');
-
+  const deleteMessageEl = document.querySelector('.js-delete-message');
+  console.log(deleteMessageEl);
   const { value } = deleteFormEl.elements.deleteuser;
   const { players } = STATE.user.local;
 
-  if (value) {
+  if (value && value !== 'Виберіть гравця') {
     STATE.user.local.players = players.filter(
       player => player.playerName !== value
     );
@@ -126,5 +127,7 @@ function onDeleteBtnClick() {
       position: 'left-top',
       distance: '10px',
     });
+  } else {
+    deleteMessageEl.classList.add('show');
   }
 }

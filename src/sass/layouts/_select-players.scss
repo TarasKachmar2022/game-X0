@@ -23,6 +23,7 @@
 }
 
 .select-player__thumb {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -36,6 +37,10 @@
 
 .select-player__select {
   @extend .select-player;
+}
+
+.select-player__message {
+  @extend .form__message;
 }
 
 .select-player__start {

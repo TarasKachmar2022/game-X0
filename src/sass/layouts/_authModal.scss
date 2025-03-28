@@ -74,19 +74,7 @@
 }
 
 .auth-form__message {
-  position: absolute;
-  bottom: -22;
-  left: 50%;
-  transform: translateX(-50%);
-  color: red;
-  opacity: 0;
-  transition-property: opacity;
-  transition-duration: var(--duration);
-  transition-timing-function: var(--timing-function);
-
-  &.show {
-    opacity: 1;
-  }
+  @extend .form__message;
 }
 
 .auth-form__wrap {
