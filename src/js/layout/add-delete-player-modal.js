@@ -24,6 +24,7 @@ function addDeletePlayerModalEvent(e) {
     hideAddDeletePlayerModal();
   }
   if (e.target.classList.contains('js-add-player')) onSubmitClick();
+  if (e.target.classList.contains('js-delete-player')) onDeleteBtnClick();
 }
 
 export function showAddPlayerModal() {
@@ -38,10 +39,27 @@ export function showAddPlayerModal() {
 export function showDeletePlayerModal() {
   addDeletePlayerModalEl.classList.remove('is-hidden');
   addDeleteModalEl.innerHTML = createDeletePlayerModalMarkup();
+  createSelectMarkup();
 }
 
 function hideAddDeletePlayerModal() {
   addDeletePlayerModalEl.classList.add('is-hidden');
+}
+
+export function createSelectMarkup() {
+  const selectDeleteEl = document.getElementById('deleteuser');
+
+  console.log(STATE.user.local);
+  const { players } = STATE.user.local;
+  console.log(players);
+  console.log(STATE.user.local);
+  let markup = '';
+
+  players.forEach(player => {
+    markup += `<option value="${player.playerName}">${player.playerName}</option>`;
+  });
+
+  selectDeleteEl.innerHTML = markup;
 }
 
 function onSubmitClick() {
@@ -70,7 +88,7 @@ function onSubmitClick() {
 
       players.push(obj);
 
-      Notiflix.Notify.success(`Гравця успішно додано!`, {
+      Notiflix.Notify.success(`Гравця ${value} успішно додано!`, {
         timeout: 6000,
         clickToClose: true,
         position: 'left-top',
@@ -84,5 +102,29 @@ function onSubmitClick() {
   } else {
     messageEl.textContent = 'Поле не може бути пустим!';
     messageEl.classList.add('player-modal__message--shown');
+  }
+}
+
+function onDeleteBtnClick() {
+  const deleteFormEl = document.getElementById('delete-player');
+
+  const { value } = deleteFormEl.elements.deleteuser;
+  const { players } = STATE.user.local;
+
+  if (value) {
+    STATE.user.local.players = players.filter(
+      player => player.playerName !== value
+    );
+
+    hideAddDeletePlayerModal();
+    createFirstSelectMarkup();
+    createSecondSelectMarkup();
+
+    Notiflix.Notify.success(`Гравця ${value} успішно видалено!`, {
+      timeout: 10000,
+      clickToClose: true,
+      position: 'left-top',
+      distance: '10px',
+    });
   }
 }

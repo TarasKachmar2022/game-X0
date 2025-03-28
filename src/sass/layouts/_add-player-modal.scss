@@ -56,6 +56,10 @@
   }
 }
 
+.delete-player__select {
+  @extend .select-player;
+}
+
 .delete-player__btn {
   @extend .btn;
   min-width: 100px;
