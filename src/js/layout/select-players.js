@@ -5,6 +5,8 @@ import {
   showAddPlayerModal,
   showDeletePlayerModal,
 } from './add-delete-player-modal';
+import { showGameMarkup } from './../game/local-mode';
+import { closeModal } from './../components/modal';
 
 const modalEl = document.querySelector('.modal');
 const backBtnEl = document.querySelector('.js-select-player-back-btn');
@@ -13,29 +15,34 @@ const backBtnEl = document.querySelector('.js-select-player-back-btn');
 // let { firstCurrentPlayer, secondCurrentPlayer } = STATE.user.local;
 
 modalEl.addEventListener('click', selectPlayersEvent);
+// startGameBtnEl.addEventListener('click', onStartGameBtnClick);
 
 function selectPlayersEvent(e) {
   e.preventDefault();
 
   const { player } = e.target.dataset;
+  let { firstCurrentPlayer, secondCurrentPlayer } = STATE.user.local;
 
   if (e.target.classList.contains('js-select-player-back-btn'))
     showSelectMode();
   if (player === 'add') {
-    showAddPlayerModal();
-
     console.log('add');
+    showAddPlayerModal();
   }
   if (player === 'delete') {
     console.log('delete');
     showDeletePlayerModal();
   }
+  if (e.target.classList.contains('js-start-game'))
+    onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer);
+  // console.log(e.target.classList.contains('js-start-game'));
 
   // if (e.target.classList.contains('js-first-select')) createFirstSelectMarkup();
   // if (e.target.classList.contains('js-second-select'))
   //   createSecondSelectMarkup();
   // console.dir(e.target);
 }
+
 export function createFirstSelectMarkup() {
   const select1El = document.getElementById('player1');
 
@@ -94,9 +101,9 @@ export function createSecondSelectMarkup() {
   select2El.addEventListener('change', selectSecondPlayerChange);
 
   function selectSecondPlayerChange(e) {
-    const { value, options } = e.target;
+    const { value } = e.target;
     STATE.user.local.secondCurrentPlayer = value;
-    let { firstCurrentPlayer, secondCurrentPlayer } = STATE.user.local;
+    let { secondCurrentPlayer } = STATE.user.local;
 
     const firstPlayerOptionsArr = [...firstPlayerSelectEl.options];
 
@@ -113,6 +120,18 @@ export function createSecondSelectMarkup() {
     );
 
     findedOption.disabled = true;
+  }
+}
+
+function onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer) {
+  if (
+    firstCurrentPlayer &&
+    firstCurrentPlayer !== 'Виберіть гравця' &&
+    secondCurrentPlayer &&
+    secondCurrentPlayer !== 'Виберіть гравця'
+  ) {
+    showGameMarkup();
+    closeModal();
   }
 }
 

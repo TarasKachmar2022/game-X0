@@ -42,7 +42,7 @@ export function createSelectPlayersModalMarkup() {
           </select>
         </div>
       </div>
-      <button class="select-player__start">Почати гру</button>
+      <button class="select-player__start js-start-game">Почати гру</button>
     </form>`;
 }
 
