@@ -4,22 +4,33 @@
   &--active {
     display: block;
     position: absolute;
-    top: 18%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -20%);
     font-weight: 700;
     font-size: 50px;
+    text-align: center;
   }
 }
+
 .score__title {
+  margin-bottom: 30px;
 }
+
+.score__box {
+  font-size: 32px;
+  display: flex;
+  gap: 50px;
+}
+
 .score__thumb {
 }
-.score__playerx {
+
+.score__player1,
+.score__player2 {
+  color: green;
 }
-.scorex {
-}
-.score__player0 {
-}
-.score0 {
+
+.score__draw {
+  color: rgb(0, 0, 190);
 }

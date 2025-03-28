@@ -1,6 +1,7 @@
 import penImage from './../../images/svg/cursor/icon-pen.svg';
 
 import { createGameMarkup } from '../components/create-game-markup';
+import { score } from './../components/score';
 import { WINS } from '../components/win-config';
 import { victoryAnimation } from '../components/victory-animation';
 import { victory, draw, loss } from '../components/result';
@@ -13,11 +14,10 @@ const clickSound = document.getElementById('click__sound');
 
 fieldEl.addEventListener('click', onClick);
 
-const localState = {
+export const localState = {
   scorePlayer1: 0,
   scorePlayer2: 0,
-  playerName1: '',
-  playerName2: '',
+  draw: 0,
   currentPlayer: '',
   player: 'X',
   historyx: [],
@@ -36,6 +36,7 @@ export function showGameMarkup() {
 
   fieldThumbEl.insertAdjacentHTML('beforebegin', penMarkup);
   fieldEl.innerHTML = markup;
+  score();
 }
 // console.log(typeof wins);
 // console.log(typeof historyx);

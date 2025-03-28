@@ -15,7 +15,6 @@ const backBtnEl = document.querySelector('.js-select-player-back-btn');
 // let { firstCurrentPlayer, secondCurrentPlayer } = STATE.user.local;
 
 modalEl.addEventListener('click', selectPlayersEvent);
-// startGameBtnEl.addEventListener('click', onStartGameBtnClick);
 
 function selectPlayersEvent(e) {
   e.preventDefault();
@@ -132,6 +131,8 @@ function onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer) {
   ) {
     showGameMarkup();
     closeModal();
+  } else {
+    // Додати повідомлення що не вибрані гравці!
   }
 }
 
