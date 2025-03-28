@@ -1,3 +1,7 @@
+.select-player__back-btn {
+  @extend .back-btn;
+}
+
 .select-player__add,
 .select-player__delete {
   @extend .btn;
@@ -16,6 +20,11 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: 90px;
+}
+
+.select-player__thumb {
+  display: flex;
+  flex-direction: column;
 }
 
 .select-player__label {

@@ -1,4 +1,4 @@
-.add-player__title {
+.player-modal__title {
   font-size: 32px;
   text-align: center;
   text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
@@ -6,12 +6,12 @@
   margin-bottom: 60px;
 }
 
-.add-player__wrap {
+.player-modal__wrap {
   position: relative;
   margin-bottom: 60px;
 }
 
-.add-player__input {
+.player-modal__input {
   font-size: 20px;
   line-height: 1.5;
   border: none;
@@ -23,7 +23,7 @@
   margin-bottom: 5px;
 }
 
-.add-player__message {
+.player-modal__message {
   position: absolute;
   bottom: -40%;
   left: 50%;
@@ -42,7 +42,7 @@
   }
 }
 
-.add-player__btn-wrap {
+.player-modal__btn-wrap {
   display: flex;
   justify-content: space-around;
 }
@@ -51,11 +51,16 @@
   @extend .btn;
   min-width: 100px;
 
-  &:first-child {
-    // @extend .btn--green;
-  }
-
   &:last-child {
+    @extend .btn--red;
+  }
+}
+
+.delete-player__btn {
+  @extend .btn;
+  min-width: 100px;
+
+  &:first-child {
     @extend .btn--red;
   }
 }

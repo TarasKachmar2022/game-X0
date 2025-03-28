@@ -17,10 +17,12 @@ export const STATE = {
       },
     },
     local: {
+      firstCurrentPlayer: '',
+      secondCurrentPlayer: '',
       players: [
         {
           playerId: '',
-          playerName: '',
+          playerName: 'Виберіть гравця',
           statistics: { wins: 0, draws: 0, losses: 0, total: 0 },
         },
       ],
