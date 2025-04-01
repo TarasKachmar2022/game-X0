@@ -17,8 +17,8 @@ export const STATE = {
       },
     },
     local: {
-      firstCurrentPlayer: '',
-      secondCurrentPlayer: '',
+      firstPlayerName: '',
+      secondPlayerName: '',
       players: [
         {
           playerId: '',

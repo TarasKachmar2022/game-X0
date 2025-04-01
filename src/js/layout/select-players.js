@@ -20,7 +20,7 @@ function selectPlayersEvent(e) {
   e.preventDefault();
 
   const { player } = e.target.dataset;
-  let { firstCurrentPlayer, secondCurrentPlayer } = STATE.user.local;
+  let { firstPlayerName, secondPlayerName } = STATE.user.local;
 
   if (e.target.classList.contains('js-select-player-back-btn'))
     showSelectMode();
@@ -33,7 +33,7 @@ function selectPlayersEvent(e) {
     showDeletePlayerModal();
   }
   if (e.target.classList.contains('js-start-game'))
-    onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer);
+    onStartGameBtnClick(firstPlayerName, secondPlayerName);
   // console.log(e.target.classList.contains('js-start-game'));
 
   // if (e.target.classList.contains('js-first-select')) createFirstSelectMarkup();
@@ -61,8 +61,8 @@ export function createFirstSelectMarkup() {
 
   function selectFirstPlayerChange(e) {
     const { value } = e.target;
-    STATE.user.local.firstCurrentPlayer = value;
-    let { firstCurrentPlayer } = STATE.user.local;
+    STATE.user.local.firstPlayerName = value;
+    let { firstPlayerName } = STATE.user.local;
 
     const secondPlayerOptionsArr = [...secondPlayerSelectEl.options];
 
@@ -75,7 +75,7 @@ export function createFirstSelectMarkup() {
     }
 
     const findedOption = secondPlayerOptionsArr.find(
-      option => option.value === firstCurrentPlayer
+      option => option.value === firstPlayerName
     );
 
     findedOption.disabled = true;
@@ -101,8 +101,8 @@ export function createSecondSelectMarkup() {
 
   function selectSecondPlayerChange(e) {
     const { value } = e.target;
-    STATE.user.local.secondCurrentPlayer = value;
-    let { secondCurrentPlayer } = STATE.user.local;
+    STATE.user.local.secondPlayerName = value;
+    let { secondPlayerName } = STATE.user.local;
 
     const firstPlayerOptionsArr = [...firstPlayerSelectEl.options];
 
@@ -115,14 +115,14 @@ export function createSecondSelectMarkup() {
     }
 
     const findedOption = firstPlayerOptionsArr.find(
-      option => option.value === secondCurrentPlayer
+      option => option.value === secondPlayerName
     );
 
     findedOption.disabled = true;
   }
 }
 
-function onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer) {
+function onStartGameBtnClick(firstPlayerName, secondPlayerName) {
   const firstPlayerMessageEl = document.querySelector(
     '.select-player__player1-message'
   );
@@ -130,23 +130,23 @@ function onStartGameBtnClick(firstCurrentPlayer, secondCurrentPlayer) {
     '.select-player__player2-message'
   );
 
-  if (firstCurrentPlayer === '' || firstCurrentPlayer === 'Виберіть гравця') {
+  if (firstPlayerName === '' || firstPlayerName === 'Виберіть гравця') {
     firstPlayerMessageEl.classList.add('show');
   } else {
     firstPlayerMessageEl.classList.remove('show');
   }
 
-  if (secondCurrentPlayer === '' || secondCurrentPlayer === 'Виберіть гравця') {
+  if (secondPlayerName === '' || secondPlayerName === 'Виберіть гравця') {
     secondPlayerMessageEl.classList.add('show');
   } else {
     secondPlayerMessageEl.classList.remove('show');
   }
 
   if (
-    firstCurrentPlayer &&
-    firstCurrentPlayer !== 'Виберіть гравця' &&
-    secondCurrentPlayer &&
-    secondCurrentPlayer !== 'Виберіть гравця'
+    firstPlayerName &&
+    firstPlayerName !== 'Виберіть гравця' &&
+    secondPlayerName &&
+    secondPlayerName !== 'Виберіть гравця'
   ) {
     showGameMarkup();
     closeModal();

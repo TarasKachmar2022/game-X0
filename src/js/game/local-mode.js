@@ -86,41 +86,41 @@ function reset() {
 export function checkWins() {
   const winnerEl = document.querySelector('.winner');
 
-  let winnerXIdx = 0;
-  let winner0Idx = 0;
+  let winnerPlayer1Idx = 0;
+  let winnerPlayer2Idx = 0;
 
   if (localState.historyx.length + localState.history0.length >= 5) {
-    const isWinnerX = WINS.some(item =>
+    const isWinner1 = WINS.some(item =>
       item.every(id => localState.historyx.includes(id))
     );
 
-    const isWinner0 = WINS.some(item =>
+    const isWinner2 = WINS.some(item =>
       item.every(id => localState.history0.includes(id))
     );
 
     // console.log(isWinnerX);
     // console.log(isWinner0);
-    const playerX = 'Taras';
-    const player0 = 'Oksana';
+    const player1 = 'Taras';
+    const player2 = 'Oksana';
 
-    if (isWinnerX) {
-      winnerXIdx = WINS.findIndex(item =>
+    if (isWinner1) {
+      winnerPlayer1Idx = WINS.findIndex(item =>
         item.every(id => localState.historyx.includes(id))
       );
 
-      victoryAnimation(playerX, winnerXIdx);
+      victoryAnimation(player1, winnerPlayer1Idx);
       fieldEl.removeEventListener('click', onClick);
-      console.log(playerX, winnerXIdx);
+      console.log(player1, winnerPlayer1Idx);
 
       // console.log('win');
       // winnerEl.textContent = 'Winner PlayerX';
-    } else if (isWinner0) {
-      winner0Idx = WINS.findIndex(item =>
+    } else if (isWinner2) {
+      winnerPlayer2Idx = WINS.findIndex(item =>
         item.every(id => localState.history0.includes(id))
       );
-      victoryAnimation(player0, winner0Idx);
+      victoryAnimation(player2, winnerPlayer2Idx);
       fieldEl.removeEventListener('click', onClick);
-      console.log(player0, winner0Idx);
+      console.log(player2, winnerPlayer2Idx);
 
       // winnerEl.textContent = 'Winner Player0';
     } else if (localState.historyx.length + localState.history0.length === 9) {

@@ -8,9 +8,9 @@ const scorePlayer2El = document.querySelector('.score__player2');
 const scoreDrawEl = document.querySelector('.score__draw');
 
 export function score() {
-  scorePlayerName1El.textContent = STATE.user.local.firstCurrentPlayer;
+  scorePlayerName1El.textContent = STATE.user.local.firstPlayerName;
   scorePlayer1El.textContent = localState.scorePlayer1;
   scoreDrawEl.textContent = localState.draw;
-  scorePlayerName2El.textContent = STATE.user.local.secondCurrentPlayer;
+  scorePlayerName2El.textContent = STATE.user.local.secondPlayerName;
   scorePlayer2El.textContent = localState.scorePlayer2;
 }
