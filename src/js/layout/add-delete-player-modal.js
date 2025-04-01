@@ -49,10 +49,8 @@ function hideAddDeletePlayerModal() {
 export function createSelectMarkup() {
   const selectDeleteEl = document.getElementById('deleteuser');
 
-  console.log(STATE.user.local);
   const { players } = STATE.user.local;
-  console.log(players);
-  console.log(STATE.user.local);
+
   let markup = '';
 
   players.forEach(player => {
@@ -108,7 +106,7 @@ function onSubmitClick() {
 function onDeleteBtnClick() {
   const deleteFormEl = document.getElementById('delete-player');
   const deleteMessageEl = document.querySelector('.js-delete-message');
-  console.log(deleteMessageEl);
+
   const { value } = deleteFormEl.elements.deleteuser;
   const { players } = STATE.user.local;
 
