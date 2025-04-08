@@ -20,12 +20,13 @@ function selectPlayersEvent(e) {
   e.preventDefault();
 
   const { player } = e.target.dataset;
-  let { firstPlayerName, secondPlayerName } = STATE.user.local;
+  let { firstPlayerName, secondPlayerName } = STATE;
 
   if (e.target.classList.contains('js-select-player-back-btn'))
     showSelectMode();
   if (player === 'add') {
     console.log('add');
+    console.log(STATE);
     showAddPlayerModal();
   }
   if (player === 'delete') {
@@ -61,8 +62,8 @@ export function createFirstSelectMarkup() {
 
   function selectFirstPlayerChange(e) {
     const { value } = e.target;
-    STATE.user.local.firstPlayerName = value;
-    let { firstPlayerName } = STATE.user.local;
+    STATE.firstPlayerName = value;
+    let { firstPlayerName } = STATE;
 
     const secondPlayerOptionsArr = [...secondPlayerSelectEl.options];
 
@@ -101,8 +102,8 @@ export function createSecondSelectMarkup() {
 
   function selectSecondPlayerChange(e) {
     const { value } = e.target;
-    STATE.user.local.secondPlayerName = value;
-    let { secondPlayerName } = STATE.user.local;
+    STATE.secondPlayerName = value;
+    let { secondPlayerName } = STATE;
 
     const firstPlayerOptionsArr = [...firstPlayerSelectEl.options];
 
@@ -148,6 +149,9 @@ function onStartGameBtnClick(firstPlayerName, secondPlayerName) {
     secondPlayerName &&
     secondPlayerName !== 'Виберіть гравця'
   ) {
+    STATE.scorePlayerFirst = 0;
+    STATE.scorePlayerSecond = 0;
+
     showGameMarkup();
     closeModal();
   }

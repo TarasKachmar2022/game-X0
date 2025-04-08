@@ -1,6 +1,6 @@
 .draw__img {
   border-radius: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .draw__result {
@@ -8,7 +8,6 @@
   text-align: center;
   text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
     -1px 1px 0 #fff;
-  margin-bottom: 10px;
 }
 
 .draw__message {
@@ -16,14 +15,14 @@
   text-align: center;
   text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
     -1px 1px 0 #fff;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
 
 .draw__wrap {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 40px;
+  gap: 15px;
 }
 
 .draw__btn {

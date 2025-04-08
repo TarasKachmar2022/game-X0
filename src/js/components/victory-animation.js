@@ -1,4 +1,4 @@
-export function victoryAnimation(player, idx) {
+export function victoryAnimation(idx) {
   const lineEl = document.querySelectorAll('.js-line');
   const penEl = document.querySelectorAll('.js-pen');
   // console.log(idx);

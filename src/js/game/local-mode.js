@@ -1,7 +1,8 @@
 import penImage from './../../images/svg/cursor/icon-pen.svg';
 
+import { STATE } from './../components/state';
 import { createGameMarkup } from '../components/create-game-markup';
-import { score } from './../components/score';
+import { updateScore, showScore } from './../components/score';
 import { WINS } from '../components/win-config';
 import { victoryAnimation } from '../components/victory-animation';
 import { victory, draw, loss } from '../components/result';
@@ -14,15 +15,15 @@ const clickSound = document.getElementById('click__sound');
 
 fieldEl.addEventListener('click', onClick);
 
-export const localState = {
-  scorePlayer1: 0,
-  scorePlayer2: 0,
-  draw: 0,
-  currentPlayer: '',
-  player: 'X',
-  historyx: [],
-  history0: [],
-};
+// export const localState = {
+//   scorePlayer1: 0,
+//   scorePlayer2: 0,
+//   draw: 0,
+//   currentPlayer: '',
+//   player: 'X',
+//   // historyPlayer1: [],
+//   // historyPlayer2: [],
+// };
 
 export function showGameMarkup() {
   const mainWrapEl = document.querySelector('.main__wrap');
@@ -36,7 +37,7 @@ export function showGameMarkup() {
 
   fieldThumbEl.insertAdjacentHTML('beforebegin', penMarkup);
   fieldEl.innerHTML = markup;
-  score();
+  showScore();
 }
 // console.log(typeof wins);
 // console.log(typeof historyx);
@@ -51,19 +52,19 @@ function onClick(e) {
     return;
   }
 
-  target.textContent = localState.player;
+  target.textContent = STATE.symbol;
   const id = Number(target.dataset.id);
 
-  if (localState.player === 'X') {
-    localState.historyx.push(id);
+  if (STATE.symbol === 'X') {
+    STATE.historyPlayer1.push(id);
   } else {
-    localState.history0.push(id);
+    STATE.historyPlayer2.push(id);
   }
 
   // console.log(history0);
   // console.log(historyx);
 
-  localState.player = localState.player === 'X' ? '0' : 'X';
+  STATE.symbol = STATE.symbol === 'X' ? '0' : 'X';
 
   // if (historyx.length + history0.length === 9) {
   //   reset();
@@ -78,9 +79,9 @@ function onClick(e) {
 
 function reset() {
   // showGameMarkup();
-  localState.historyx = [];
-  localState.history0 = [];
-  player = 'X';
+  STATE.historyPlayer1 = [];
+  STATE.historyPlayer2 = [];
+  STATE.symbol = 'X';
 }
 
 export function checkWins() {
@@ -89,43 +90,55 @@ export function checkWins() {
   let winnerPlayer1Idx = 0;
   let winnerPlayer2Idx = 0;
 
-  if (localState.historyx.length + localState.history0.length >= 5) {
+  if (STATE.historyPlayer1.length + STATE.historyPlayer2.length >= 5) {
     const isWinner1 = WINS.some(item =>
-      item.every(id => localState.historyx.includes(id))
+      item.every(id => STATE.historyPlayer1.includes(id))
     );
 
     const isWinner2 = WINS.some(item =>
-      item.every(id => localState.history0.includes(id))
+      item.every(id => STATE.historyPlayer2.includes(id))
     );
 
     // console.log(isWinnerX);
     // console.log(isWinner0);
-    const player1 = 'Taras';
-    const player2 = 'Oksana';
 
     if (isWinner1) {
+      const firstPlayerName = STATE.firstPlayerName;
+      // const scorePlayerFirst = STATE.user.local.scorePlayerFirst;
+
       winnerPlayer1Idx = WINS.findIndex(item =>
-        item.every(id => localState.historyx.includes(id))
+        item.every(id => STATE.historyPlayer1.includes(id))
       );
 
-      victoryAnimation(player1, winnerPlayer1Idx);
+      victoryAnimation(winnerPlayer1Idx);
       fieldEl.removeEventListener('click', onClick);
-      console.log(player1, winnerPlayer1Idx);
-
+      console.log(winnerPlayer1Idx);
+      victory(firstPlayerName, 'firstPlayer', STATE);
+      updateScore('firstPlayer', STATE);
+      showScore();
       // console.log('win');
       // winnerEl.textContent = 'Winner PlayerX';
     } else if (isWinner2) {
-      winnerPlayer2Idx = WINS.findIndex(item =>
-        item.every(id => localState.history0.includes(id))
-      );
-      victoryAnimation(player2, winnerPlayer2Idx);
-      fieldEl.removeEventListener('click', onClick);
-      console.log(player2, winnerPlayer2Idx);
+      const secondPlayerName = STATE.secondPlayerName;
 
+      winnerPlayer2Idx = WINS.findIndex(item =>
+        item.every(id => STATE.historyPlayer2.includes(id))
+      );
+      victoryAnimation(winnerPlayer2Idx);
+      fieldEl.removeEventListener('click', onClick);
+      console.log(winnerPlayer2Idx);
+      updateScore('secondPlayer', STATE);
+      showScore();
+      victory(secondPlayerName, 'secondPlayer', STATE);
       // winnerEl.textContent = 'Winner Player0';
-    } else if (localState.historyx.length + localState.history0.length === 9) {
+    } else if (
+      STATE.historyPlayer1.length + STATE.historyPlayer2.length ===
+      9
+    ) {
       // reset();
-      draw();
+      updateScore('draw', STATE);
+      showScore();
+      draw(STATE);
     }
   }
 }

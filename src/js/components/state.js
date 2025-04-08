@@ -6,6 +6,14 @@ export const STATE = {
   currentSymbol: '',
   winner: null,
   gameOver: true,
+  firstPlayerName: '',
+  secondPlayerName: '',
+  historyPlayer1: [],
+  historyPlayer2: [],
+  scorePlayerFirst: 0,
+  scorePlayerSecond: 0,
+  scoreDraw: 0,
+  symbol: 'X',
   user: {
     uid: '',
     bot: {
@@ -17,8 +25,6 @@ export const STATE = {
       },
     },
     local: {
-      firstPlayerName: '',
-      secondPlayerName: '',
       players: [
         {
           playerId: '',
