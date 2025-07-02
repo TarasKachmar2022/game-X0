@@ -1,3 +1,6 @@
+import winImage from './../../images/win.jpg';
+import drawImage from './../../images/draw.jpg';
+
 export function createSelectModeModalMarkup() {
   return `<div class="hero">
   <span class="hero__title">Виберіть режим гри</span>
@@ -10,7 +13,8 @@ export function createSelectModeModalMarkup() {
 }
 
 export function createSelectLevelModalMarkup() {
-  return `<div class="hero">
+  return `<button class="back-btn js-select-player-back-btn">Назад</button>
+  <div class="hero">
   <span class="hero__title">Виберіть рівень складності</span>
 </div>
 <div class="select-level__wrap">
@@ -81,6 +85,27 @@ export function createDeletePlayerModalMarkup() {
 <button class="delete-player__btn js-close-modal">Відмінити</button>
 </div>
 </form>`;
+}
+
+export function createVictoryModalMarkup(playerName) {
+  return `<img class="win__img" src="${winImage}" alt="Вітання" />
+    <p class="win__message">${playerName} переміг(ла)!</p>
+    <div class="win__wrap">
+      <button class="win__btn" data-victory="mode">Головне меню</button>
+      <button class="win__btn" data-victory="player">Змінити гравця</button>
+      <button class="win__btn" data-victory="game">Грати ще</button>
+    </div>`;
+}
+
+export function createDrawModalMarkup() {
+  return `<img class="draw__img" src="${drawImage}" alt="Нічия" />
+    <p class="draw__result">Нічия</p>
+    <p class="draw__message">Перемогла дружба!</p>
+    <div class="draw__wrap">
+      <button class="draw__btn" data-draw="mode">Головне меню</button>
+      <button class="draw__btn" data-draw="player">Змінити гравця</button>
+      <button class="draw__btn" data-draw="game">Грати ще</button>
+    </div>`;
 }
 
 /* <input

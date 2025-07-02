@@ -84,5 +84,21 @@
   position: absolute;
   top: 20px;
   left: 20px;
+  font-size: 20px;
   z-index: 1;
+  color: black;
+  background-color: transparent;
+  border: none;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff,
+    -1px 1px 0 #fff;
+  transition-property: color, text-shadow;
+  transition-duration: var(--duration);
+  transition-timing-function: var(--timing-function);
+
+  &:focus,
+  &:hover {
+    color: white;
+    text-shadow: 1px 1px 0 #ff0000, -1px -1px 0 #ff0000, 1px -1px 0 #ff0000,
+      -1px 1px 0 #ff0000;
+  }
 }

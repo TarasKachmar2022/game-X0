@@ -5,7 +5,7 @@ import {
   showAddPlayerModal,
   showDeletePlayerModal,
 } from './add-delete-player-modal';
-import { showGameMarkup } from './../game/local-mode';
+import { showGameMarkup, startGame } from './../game/local-mode';
 import { closeModal } from './../components/modal';
 
 const modalEl = document.querySelector('.modal');
@@ -150,9 +150,11 @@ function onStartGameBtnClick(firstPlayerName, secondPlayerName) {
     secondPlayerName !== 'Виберіть гравця'
   ) {
     STATE.scorePlayerFirst = 0;
+    STATE.scoreDraw = 0;
     STATE.scorePlayerSecond = 0;
 
     showGameMarkup();
+    startGame();
     closeModal();
   }
 }
